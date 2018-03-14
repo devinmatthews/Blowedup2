@@ -23,7 +23,10 @@ public class EnemyComponent : UnitComponent {
 
             // destroy enemy if health is <= 0
             if (health <= 0)
+            {
                 Die();
+                LevelComponent.enemiesKilled++;
+            }
         }
     }
 }

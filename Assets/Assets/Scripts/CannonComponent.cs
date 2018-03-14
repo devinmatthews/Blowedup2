@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonComponent : UnitComponent {
-	
-	void Update () {
+
+    public Material cannon_75;
+    public Material cannon_50;
+    public Material cannon_25;
+
+    void Update () {
 
         if (Input.GetAxisRaw("Horizontal") > 0) // move right
         {
@@ -36,8 +40,13 @@ public class CannonComponent : UnitComponent {
             // destroy bullet
             Destroy(other.gameObject);
 
-            // destroy enemy if health is <= 0
-            if (health <= 0)
+            if (health >= 75)
+                _meshRenderer.material = cannon_75;
+            else if (health >= 50)
+                _meshRenderer.material = cannon_50;
+            else if (health >= 1)
+                _meshRenderer.material = cannon_25;
+            else
                 Die();
         }
     }
