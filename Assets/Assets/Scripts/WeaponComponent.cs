@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponComponent : MonoBehaviour {
-    
+
+    public bool trackAmmo;
     public int roundCapacity;
     public float roundReloadDelay;
     public float roundFireDelay;
@@ -19,15 +21,32 @@ public class WeaponComponent : MonoBehaviour {
     private Vector3 spawnLocation;
     private Vector3 direction;
 
-    //private static int roundsAvailable;
-    private static int RoundsAvailable // use property to update UI later on
+    private Text ammoText;
+
+    private int roundsAvailable;
+    private int RoundsAvailable // use property to update UI later on
     {
-        get; set;
+        get
+        {
+            return roundsAvailable;
+        }
+        set
+        {
+            roundsAvailable = value;
+
+            if (trackAmmo)
+                ammoText.text = "".PadLeft(value, 'O');
+        }
     }
 
     private void Awake()
     {
         projectileClass = projectile.GetComponent<ProjectileComponent>();
+
+        if (trackAmmo)
+        {
+            ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<Text>();
+        }
     }
 
     private void Start()

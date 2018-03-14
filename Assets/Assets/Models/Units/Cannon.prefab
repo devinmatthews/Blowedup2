@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd940ea2eb790db46a20931dcc3a16bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trackAmmo: 1
   roundCapacity: 4
   roundReloadDelay: 0.6
   roundFireDelay: 0.2
