@@ -10,7 +10,7 @@ public class KillScript : MonoBehaviour {
     {
         if (other.gameObject.name == playerObject.name)
         {
-            // prevent movement
+            // code shouldn't reach this point
             Debug.Log("CANNON OUT OF BOUNDS");
         }
         else

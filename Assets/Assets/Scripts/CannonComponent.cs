@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonComponent : UnitComponent {
-
-    public GameObject floor;
-    public float moveSpeed = 1f;
-    public Rigidbody projectile;
-    public float projectileSpeed = 1f;
 	
 	void Update () {
 
@@ -23,11 +18,27 @@ public class CannonComponent : UnitComponent {
 
     private void FixedUpdate()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             var spawnLocation = new Vector3(transform.position.x, transform.position.y, transform.position.z + transform.localScale.z / 2);
-            var projectileSpawn = Instantiate(projectile, spawnLocation, Quaternion.identity);
-            projectileSpawn.AddForce(transform.forward * projectileSpeed);
+            FireWeapon(spawnLocation, Vector3.forward);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            // take health
+            var projectile = other.gameObject.GetComponent<ProjectileComponent>();
+            health -= projectile.damageDealt;
+
+            // destroy bullet
+            Destroy(other.gameObject);
+
+            // destroy enemy if health is <= 0
+            if (health <= 0)
+                Die();
         }
     }
 }

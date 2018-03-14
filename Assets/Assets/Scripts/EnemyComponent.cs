@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class EnemyComponent : UnitComponent {
 
+    private void Update()
+    {
+        var spawnLocation = new Vector3(transform.position.x, transform.position.y, transform.position.z - transform.localScale.z / 2);
+        FireWeapon(spawnLocation, Vector3.forward * -1);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "CannonBall")
         {
             // take health
-            var weapon = other.gameObject.GetComponent<WeaponComponent>();
-            health -= weapon.damageDealt;
+            var projectile = other.gameObject.GetComponent<ProjectileComponent>();
+            health -= projectile.damageDealt;
 
             // destroy cannonball
             Destroy(other.gameObject);
