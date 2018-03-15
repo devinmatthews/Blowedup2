@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CannonComponent : UnitComponent {
 
     public Material cannon_75;
     public Material cannon_50;
     public Material cannon_25;
+    public float moveSpeed = 1f;
+
+    //protected override void Awake()
+    //{
+    //    base.Awake();
+        
+    //}
 
     void Update () {
 
@@ -36,6 +44,8 @@ public class CannonComponent : UnitComponent {
             // take health
             var projectile = other.gameObject.GetComponent<ProjectileComponent>();
             health -= projectile.damageDealt;
+            GameState.Score -= 30;
+            audioSource.PlayOneShot(damageTakenSound);
 
             // destroy bullet
             Destroy(other.gameObject);
@@ -47,7 +57,10 @@ public class CannonComponent : UnitComponent {
             else if (health >= 1)
                 _meshRenderer.material = cannon_25;
             else
+            {
+                GameState.gameOver = true;
                 Die();
+            }
         }
     }
 }

@@ -3,16 +3,18 @@
 public class UnitComponent : MonoBehaviour {
 
     public long health;
-    public float moveSpeed = 1f;
+    public AudioClip damageTakenSound;
 
     protected MeshRenderer _meshRenderer;
+    protected AudioSource audioSource;
 
     private WeaponComponent weaponClass;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         weaponClass = GetComponent<WeaponComponent>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void FireWeapon(Vector3 spawnLocation, Vector3 direction)

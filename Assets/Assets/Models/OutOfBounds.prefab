@@ -101,3 +101,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 114973159644617682, guid: 21d3a96492afad64380fc3cf1c5bf193,
     type: 2}
+  enemyObject: {fileID: 114481353751393282, guid: f4e7ec6bb150e56449c3defa072387a6,
+    type: 2}

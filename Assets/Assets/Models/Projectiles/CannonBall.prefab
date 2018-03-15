@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageDealt: 35
   projectileSpeed: 5
+  sound: {fileID: 8300000, guid: 2ede8b7ddc1ed01489b5602b93868a7e, type: 3}
 --- !u!135 &135475085996670894
 SphereCollider:
   m_ObjectHideFlags: 1

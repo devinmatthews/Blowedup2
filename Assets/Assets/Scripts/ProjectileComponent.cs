@@ -6,5 +6,5 @@ public class ProjectileComponent : MonoBehaviour {
 
     public long damageDealt;
     public float projectileSpeed;
-
+    public AudioClip sound;
 }

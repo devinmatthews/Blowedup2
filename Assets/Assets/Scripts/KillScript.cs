@@ -8,12 +8,9 @@ public class KillScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == playerObject.name)
-        {
-            // code shouldn't reach this point
-            Debug.Log("CANNON OUT OF BOUNDS");
-        }
-        else
+        if (other.CompareTag("CannonBall") ||
+            other.CompareTag("Bullet") ||
+            other.CompareTag("FlameWave"))
         {
             Destroy(other.gameObject);
         }

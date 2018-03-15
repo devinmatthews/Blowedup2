@@ -22,6 +22,7 @@ public class WeaponComponent : MonoBehaviour {
     private Vector3 direction;
 
     private Text ammoText;
+    private AudioSource audioSource;
 
     private int roundsAvailable;
     private int RoundsAvailable // use property to update UI later on
@@ -42,6 +43,7 @@ public class WeaponComponent : MonoBehaviour {
     private void Awake()
     {
         projectileClass = projectile.GetComponent<ProjectileComponent>();
+        audioSource = GetComponent<AudioSource>();
 
         if (trackAmmo)
         {
@@ -74,6 +76,7 @@ public class WeaponComponent : MonoBehaviour {
         {
             // fire a round
             var projectileSpawn = Instantiate(projectile, spawnLocation, Quaternion.identity);
+            audioSource.PlayOneShot(projectileClass.sound);
             projectileSpawn.AddForce(direction * projectileClass.projectileSpeed, ForceMode.VelocityChange);
 
             RoundsAvailable--;

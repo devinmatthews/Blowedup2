@@ -8,6 +8,11 @@ TagManager:
   - Bullet
   - Enemy
   - AmmoText
+  - ScoreText
+  - LevelGoodImg
+  - LevelBadImg
+  - Boss
+  - FlameWave
   layers:
   - Default
   - TransparentFX
