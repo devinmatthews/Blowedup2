@@ -39,7 +39,8 @@ public class CannonComponent : UnitComponent {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet" ||
+            other.gameObject.tag == "FlameWave")
         {
             // take health
             var projectile = other.gameObject.GetComponent<ProjectileComponent>();
@@ -50,16 +51,19 @@ public class CannonComponent : UnitComponent {
             // destroy bullet
             Destroy(other.gameObject);
 
-            if (health >= 75)
-                _meshRenderer.material = cannon_75;
-            else if (health >= 50)
-                _meshRenderer.material = cannon_50;
-            else if (health >= 1)
-                _meshRenderer.material = cannon_25;
-            else
+            if (health <= 0)
             {
                 GameState.gameOver = true;
                 Die();
+            }
+            else
+            {
+                if (health >= 75)
+                    _meshRenderer.material = cannon_75;
+                else if (health >= 50)
+                    _meshRenderer.material = cannon_50;
+                else
+                    _meshRenderer.material = cannon_25;
             }
         }
     }

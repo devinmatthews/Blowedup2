@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7f57c4ae985454d839476342d7bf45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageDealt: 33
+  damageDealt: 35
   projectileSpeed: 3
   sound: {fileID: 8300000, guid: 9d7acd4286e923c469405618fbaa76f6, type: 3}
